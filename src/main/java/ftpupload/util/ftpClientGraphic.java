@@ -69,11 +69,13 @@ public class ftpClientGraphic {
 
                 try {
                     img = ImageIO.read(this.getClass().getResource("/ftp.png"));
+                    System.out.println(img);
                 } catch (IOException e){
                     e.printStackTrace();
                 }
 
 
+        System.out.println("Echo testing");
         ftp.setSize(700, 150);
         ftp.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         ftp.setMaximumSize(getMaxWindowDimension());
