@@ -13,7 +13,7 @@ public class ftpupload {
     public static void main(String args[]){
         System.out.println("Testing");
         new ftpClientGraphic();
-        System.out.println("Jenkins 12344556");
+        System.out.println("Jenkins 123445565544545545544454545544545");
     }
 
 
