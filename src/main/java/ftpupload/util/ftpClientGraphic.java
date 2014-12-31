@@ -81,7 +81,7 @@ public class ftpClientGraphic {
         ftp.setMaximumSize(getMaxWindowDimension());
         ftp.getContentPane().setLayout(new BoxLayout(ftp.getContentPane(), BoxLayout.Y_AXIS));
         ftp.setResizable(false);
-        ftp.setTitle("(Blog Chan - Asus Router) File Sync");
+        ftp.setTitle("(Blog Chan - Asus Router) File Uploader");
         ftp.setIconImage(img);
 
         ftpPanelLabels.setLayout(new FlowLayout());
