@@ -6,7 +6,7 @@
 
     <groupId>com.forgottenminecraft.ftpupload</groupId>
     <artifactId>JFTP</artifactId>
-    <version>0.1-ALPHA-SNAPSHOT</version>
+    <version>0.1-ALPHA-SNAPSHOT-LINUX</version>
     <packaging>jar</packaging>
 
     <name>JFTP</name>
