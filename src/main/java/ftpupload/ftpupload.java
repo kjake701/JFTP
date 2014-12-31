@@ -1,6 +1,7 @@
 package ftpupload;
 
 import ftpupload.util.ftpClientGraphic;
+import ftpupload.util.ftpVarUtil;
 import org.apache.commons.net.ftp.FTP;
 
 /**
@@ -9,11 +10,16 @@ import org.apache.commons.net.ftp.FTP;
 public class ftpupload {
 
     FTP tp = new FTP();
+    private static int id = ftpVarUtil.getwID();
 
     public static void main(String args[]){
-        System.out.println("Testing");
-        new ftpClientGraphic();
-        System.out.println("Jenkins Final 1");
+        System.out.println("Starting client...");
+        if(id == 1) {
+            System.out.println("Session verified");
+            ftpClientGraphic j = new ftpClientGraphic(id);
+        } else {
+            System.out.println("Can't verify window");
+        }
     }
 
 

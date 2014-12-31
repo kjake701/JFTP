@@ -75,6 +75,7 @@ public class ftpClient {
         if(client.isConnected()){
             client.logout();
             client.disconnect();
+            connected = client.isConnected();
         } else {
             System.out.println("Not connected");
         }

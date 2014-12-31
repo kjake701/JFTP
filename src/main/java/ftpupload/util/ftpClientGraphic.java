@@ -25,14 +25,12 @@ public class ftpClientGraphic {
     JPasswordField pass;
     JLabel hostl, userl, passl, portl, loginL, loginStatusL;
     Rectangle setR;
-    private boolean isConnected;
     private BufferedImage img;
+    boolean isConnect = false;
 
-    public ftpClientGraphic(){
+    public ftpClientGraphic(int id){
         ftpUtil = new ftpVarUtil();
         fClient = new ftpClient();
-
-        isConnected = fClient.getFTPClient().isConnected();
 
         makeFrame();
     }
@@ -44,18 +42,13 @@ public class ftpClientGraphic {
         ftpPanelButtons = new JPanel();
         ftpPanelLabels = new JPanel();
 
-        try {
-            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-        } catch (Exception  e){
-            System.out.println(e);
-        }
-
         getframeProperties();
 
         addComponents();
         buttonLogic();
 
         ftp.setVisible(true);
+        ftp.setSize(750,150);
     }
 
     public Dimension getMaxWindowDimension(){
@@ -86,9 +79,6 @@ public class ftpClientGraphic {
 
         ftpPanelLabels.setLayout(new FlowLayout());
 
-        ftpPanelButtons.setBackground(Color.DARK_GRAY);
-        ftpPanelTextFields.setBackground(Color.DARK_GRAY);
-        ftpPanelLabels.setBackground(Color.DARK_GRAY);
 
         ftp.add(ftpPanelLabels);
         ftp.add(ftpPanelTextFields);
@@ -113,11 +103,6 @@ public class ftpClientGraphic {
         close.setBounds(setR);
         set.setBounds(setR);
 
-        login.setBackground(Color.DARK_GRAY);
-        upload.setBackground(Color.DARK_GRAY);
-        close.setBackground(Color.DARK_GRAY);
-        set.setBackground(Color.DARK_GRAY);
-
         host = new JTextField("192.168.1.64", 15);
         user = new JTextField("Fang", 15);
         pass = new JPasswordField("Redford9724!", 15);
@@ -128,7 +113,7 @@ public class ftpClientGraphic {
         passl = new JLabel("                        Password                      ");
         portl = new JLabel("Port Number");
         loginL = new JLabel("Connected: ");
-        loginStatusL = new JLabel(String.valueOf(isConnected));
+        loginStatusL = new JLabel(String.valueOf(isConnect));
 
         ftpPanelLabels.add(hostl);
         ftpPanelLabels.add(userl);
@@ -178,8 +163,10 @@ public class ftpClientGraphic {
             public void actionPerformed(ActionEvent e) {
                 try {
                     fClient.ftpLogin(ftpUtil.getHost(), ftpUtil.getUser(), ftpUtil.getPass(), ftpUtil.getPort());
-                    loginStatusL.setText(String.valueOf(fClient.isConnected()));
-                    System.out.println(isConnected);
+
+                    isConnect = fClient.isConnected();
+                    System.out.println("Connected: " + isConnect);
+                    loginStatusL.setText(String.valueOf(isConnect));
                 } catch (IOException e1) {
                     e1.printStackTrace();
                 }
@@ -191,7 +178,9 @@ public class ftpClientGraphic {
             public void actionPerformed(ActionEvent e) {
                 try {
                     fClient.ftpDisconnect();
-                    loginStatusL.setText(String.valueOf(fClient.isConnected()));
+                    isConnect = fClient.isConnected();
+                    System.out.println("Connected: " + isConnect);
+                    loginStatusL.setText(String.valueOf(isConnect));
                 } catch (IOException e1) {
                     e1.printStackTrace();
                 }

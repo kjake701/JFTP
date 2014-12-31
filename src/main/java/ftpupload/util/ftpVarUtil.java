@@ -5,6 +5,11 @@ package ftpupload.util;
  */
 public class ftpVarUtil {
     private String[] info = {"192.168.1.64", "Fang", "Redford9724!", "21"};
+    private static int wID = 1;
+
+    public static int getwID(){
+        return wID;
+    }
 
     public String getHost(){
         return info[0];
