@@ -12,7 +12,10 @@ public class ftpupload {
     FTP tp = new FTP();
     private static int id = ftpVarUtil.getwID();
 
+
+
     public static void main(String args[]){
+        System.out.println("test");
         System.out.println("Starting client...");
         if(id == 1) {
             System.out.println("Session verified");
